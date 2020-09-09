@@ -3,6 +3,8 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import presenter.calculator.Calculator;
+
 /**
  * Classe principal
  * 
@@ -37,6 +39,6 @@ public class App extends JFrame {
     }
 
     public static void main(final String[] args) {
-        new App(null).start();
+        new App(new Calculator()).start();
     }
 }
