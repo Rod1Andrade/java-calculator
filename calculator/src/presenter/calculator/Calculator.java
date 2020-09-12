@@ -33,11 +33,11 @@ public class Calculator  extends JPanel {
         this.setLayout(new BorderLayout());
         this.setPreferredSize(this.getPreferredSize());
 
-        this.result = new Result("Nenhuma operação...");
+        this.result = new Result(Result.DEFAULT_VALUE);
         this.add(this.result, BorderLayout.NORTH);
 
         // Controllers (acoplado)
-        ResultController resultController = new ResultController(result.getResultLabel());
+        ResultController resultController = new ResultController(result);
         ButtonController buttonController = new ButtonController(resultController);
 
         this.buttonPanel = new ButtonPanel(buttonController);

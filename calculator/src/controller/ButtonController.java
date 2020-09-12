@@ -34,6 +34,5 @@ public class ButtonController implements ActionListener {
         }
 
         this.resultController.changeLabel();
-
     }
 }
