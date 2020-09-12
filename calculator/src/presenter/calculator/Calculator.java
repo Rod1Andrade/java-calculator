@@ -1,17 +1,18 @@
 package presenter.calculator;
 
-import javax.swing.JPanel;
 
 import presenter.components.ButtonPanel;
 import presenter.components.Result;
+import presenter.components.SidePanel;
 
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * Presenter Calculator
  * 
- * Classe responsalve por apresentar a feature
- * calculadora.
+ * Classe responsalve por apresentar a funcionalidade principal
+ * de calculadora.
  * 
  * @author Rodrigo Andrade
  */
@@ -21,6 +22,7 @@ public class Calculator  extends JPanel {
 
     private Result result;
     private ButtonPanel buttonPanel;
+    private SidePanel sidePanel;
 
     /**
      * Construtor
@@ -34,5 +36,8 @@ public class Calculator  extends JPanel {
 
         this.buttonPanel = new ButtonPanel();
         this.add(this.buttonPanel, BorderLayout.CENTER);
+
+        this.sidePanel = new SidePanel();
+        this.add(this.sidePanel, BorderLayout.EAST);
     }
 }

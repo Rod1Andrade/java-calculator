@@ -38,14 +38,14 @@ public class ButtonPanel extends JPanel {
         this.setLayout(gridLayout);
         this.setPreferredSize(this.getPreferredSize());
 
-        this.initButtons();
+        this.init();
         this.addAllButtons();
     }
 
     /**
-     * Funcao para iniciar os botoes
+     * Funcao para instanciar os componentes
      */
-    private void initButtons() {
+    private void init() {
         this.button7 = new Button("7");
         this.button8 = new Button("8");
         this.button9 = new Button("9");

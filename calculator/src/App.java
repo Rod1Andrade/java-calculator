@@ -1,9 +1,9 @@
+import presenter.calculator.Calculator;
+
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import presenter.calculator.Calculator;
 
 /**
  * Classe principal

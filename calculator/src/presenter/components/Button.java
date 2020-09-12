@@ -27,8 +27,8 @@ public class Button extends JButton {
     Button(String value) {
         this.value = value;
         this.setMinimumSize(new Dimension(Button.WIDTH, Button.HEIGHT));
-        this.setBackground(Color.BLACK);
-        this.setForeground(Color.WHITE);
+        this.setBackground(Color.WHITE);
+        this.setForeground(Color.BLACK);
         this.setText(this.getValue());
     }
 
