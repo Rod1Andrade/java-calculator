@@ -1,6 +1,5 @@
 package presenter.components;
 
-import controller.OperatorController;
 import domain.Operator;
 import enums.Opeators;
 

@@ -3,7 +3,6 @@ package presenter.calculator;
 import controller.ButtonController;
 import controller.OperatorController;
 import controller.ResultController;
-import domain.Operator;
 import presenter.components.ButtonPanel;
 import presenter.components.OperatorSelect;
 import presenter.components.Result;
@@ -20,43 +19,46 @@ import java.awt.*;
  * 
  * @author Rodrigo Andrade
  */
-public class Calculator  extends JPanel {
+public class CalculatorView extends JPanel {
     
     private static final long serialVersionUID = 1L;
 
-    private Result result;
-    private ButtonPanel buttonPanel;
-    private SidePanel sidePanel;
-    private OperatorSelect operatorSelectComponent;
+    private final  Result result;
+    private final ButtonPanel buttonPanel;
+    private final SidePanel sidePanel;
+    private final OperatorSelect operatorSelectComponent;
 
     /**
      * Construtor
      */
-    public Calculator() {
+    public CalculatorView() {
         this.setLayout(new BorderLayout());
         this.setPreferredSize(this.getPreferredSize());
 
+        // Label result panel
         this.result = new Result(Result.DEFAULT_VALUE);
         this.add(this.result, BorderLayout.NORTH);
 
-        // Controllers (conscientemente acoplado nesse ponto)
-        ResultController resultController = new ResultController(result);
-        ButtonController buttonController = new ButtonController(resultController);
+        ResultController resultController = new ResultController(result); // (conscientemente acoplado nesse ponto)
 
+        // Keyboard panel
+        ButtonController buttonController = new ButtonController(resultController);
         this.buttonPanel = new ButtonPanel(buttonController);
         this.add(this.buttonPanel, BorderLayout.CENTER);
 
+        // SidePanel
         this.operatorSelectComponent = new OperatorSelect();
 
-        // Controller (conscientemente acoplado nesse ponto)
         OperatorController operatorController = new OperatorController(
                 resultController,
                 this.operatorSelectComponent.getOperatorSelect()
-        );
+        ); // (conscientemente acoplado nesse ponto)
 
         this.operatorSelectComponent.getOperatorSelectActionButton().addActionListener(operatorController);
 
         this.sidePanel = new SidePanel(this.operatorSelectComponent);
+        this.sidePanel.getResultButton().addActionListener(buttonController);
+
         this.add(this.sidePanel, BorderLayout.EAST);
     }
 }

@@ -1,4 +1,4 @@
-import presenter.calculator.Calculator;
+import presenter.calculator.CalculatorView;
 
 import java.awt.Dimension;
 
@@ -39,6 +39,6 @@ public class App extends JFrame {
     }
 
     public static void main(final String[] args) {
-        new App(new Calculator()).start();
+        new App(new CalculatorView()).start();
     }
 }

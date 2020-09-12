@@ -19,7 +19,7 @@ public class SidePanel extends JPanel {
      */
     public SidePanel(OperatorSelect operatorSelect) {
         this.operatorSelect = operatorSelect;
-        this.resultButton = new JButton("Resultado");
+        this.resultButton = new JButton(Result.RESULT_VALUE);
 
         GridLayout gridLayout = new GridLayout(2, 1);
         gridLayout.setVgap(10);

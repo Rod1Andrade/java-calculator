@@ -29,6 +29,8 @@ public class ButtonController implements ActionListener {
 
         if(button.getText().equals("Deletar")) {
             this.resultController.deleteValue();
+        } else if(button.getText().equals(Result.RESULT_VALUE)) {
+            this.resultController.makeResult();
         } else {
             this.resultController.concatValue(button.getText());
         }

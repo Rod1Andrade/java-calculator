@@ -19,6 +19,7 @@ public class Result extends JPanel {
     public static final int PADDING_VERTICAL = 15;
 
     public static final String DEFAULT_VALUE = "Nenhuma operação...";
+    public static final String RESULT_VALUE = "Resultado";
 
     private JLabel resultLabel;
 

@@ -1,11 +1,12 @@
 package controller;
 
+import domain.Calculator;
 import presenter.components.Result;
 
 import javax.swing.*;
 
 /**
- * Controller do componente Result
+ * Controller do componente 'Result'
  *
  * @author Rodrigo Andrade
  */
@@ -24,7 +25,7 @@ public class ResultController {
     }
 
     /**
-     * Define um texto para a label
+     * Aplica a mudanca na label
      */
     public void changeLabel() {
         if(this.result != null) {
@@ -60,5 +61,16 @@ public class ResultController {
         if (this.value.isEmpty()) {
             this.value = Result.DEFAULT_VALUE;
         }
+    }
+
+    /**
+     * Aplica a expressao a uma funcao
+     * para obter o resultado
+     */
+    public void makeResult() {
+        Calculator calculator = Calculator.factoryCalculatorIntance();
+
+        double result = calculator.make(this.value);
+        this.value = String.valueOf(result);
     }
 }
