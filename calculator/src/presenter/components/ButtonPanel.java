@@ -27,7 +27,7 @@ public class ButtonPanel extends JPanel {
     private Button button3;
 
     private Button button0;
-    private Button buttonComma;
+    private Button buttonDot;
     private Button buttonDelete;
 
     /**
@@ -65,7 +65,7 @@ public class ButtonPanel extends JPanel {
         this.button3 = new Button("3", this.buttonController);
 
         this.button0 = new Button("0", this.buttonController);
-        this.buttonComma = new Button(",", this.buttonController);
+        this.buttonDot = new Button(".", this.buttonController);
         this.buttonDelete = new Button("Deletar", this.buttonController);
     }
 
@@ -86,7 +86,7 @@ public class ButtonPanel extends JPanel {
         this.add(this.button3);
         
         this.add(this.button0);
-        this.add(this.buttonComma);
+        this.add(this.buttonDot);
         this.add(this.buttonDelete);
     }
 }

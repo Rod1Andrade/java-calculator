@@ -4,52 +4,47 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Painel lateral
+ * Painel lateral com o seletor de operacoes
+ * e o botao de resultado.
  * 
  * @author Rodrigo Andrade
  */
 public class SidePanel extends JPanel {
 
-    private JComboBox<String> operatorSelect;
-    private JButton operatorSelectActionButton;
+    private OperatorSelect operatorSelect;
+    private JButton resultButton;
 
     /**
      * Construtor
      */
-    public SidePanel() {
-        this.setLayout(new BorderLayout());
-        this.init();
+    public SidePanel(OperatorSelect operatorSelect) {
+        this.operatorSelect = operatorSelect;
+        this.resultButton = new JButton("Resultado");
 
         GridLayout gridLayout = new GridLayout(2, 1);
-        gridLayout.setVgap(5);
+        gridLayout.setVgap(10);
 
-        JPanel operatorPanel = new JPanel(gridLayout);
-        operatorPanel.add(this.operatorSelect);
-        operatorPanel.add(this.operatorSelectActionButton);
+        JPanel sidePanelComponents = new JPanel(gridLayout);
+        sidePanelComponents.add(this.operatorSelect);
+        sidePanelComponents.add(this.resultButton);
 
-        this.add(operatorPanel, BorderLayout.NORTH);
+        this.setLayout(new BorderLayout());
+        this.add(sidePanelComponents, BorderLayout.NORTH);
     }
 
-    /**
-     * Funcao para iniciar os componentes
-     */
-    private void init() {
-        this.operatorSelect = this.defineOperatorSelect();
-        this.operatorSelectActionButton = new JButton("Selecionar Operacao");
+    public OperatorSelect getOperatorSelect() {
+        return operatorSelect;
     }
 
-    /**
-     * Intancia uma combox com seus valores pre-definidos.
-     *
-     * @return JComboBox
-     */
-    private JComboBox<String> defineOperatorSelect() {
-        JComboBox<String> comboBox = new JComboBox();
-        comboBox.addItem("Adicao");
-        comboBox.addItem("Subtracao");
-        comboBox.addItem("Divisao");
-        comboBox.addItem("Multiplicacao");
+    public void setOperatorSelect(OperatorSelect operatorSelect) {
+        this.operatorSelect = operatorSelect;
+    }
 
-        return comboBox;
+    public JButton getResultButton() {
+        return resultButton;
+    }
+
+    public void setResultButton(JButton resultButton) {
+        this.resultButton = resultButton;
     }
 }
