@@ -1,5 +1,7 @@
 package presenter.components;
 
+import controller.ButtonController;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.border.BevelBorder;
@@ -24,12 +26,14 @@ public class Button extends JButton {
      * 
      * @param value
      */
-    Button(String value) {
+    Button(String value, ButtonController controller) {
         this.value = value;
         this.setMinimumSize(new Dimension(Button.WIDTH, Button.HEIGHT));
         this.setBackground(Color.WHITE);
         this.setForeground(Color.BLACK);
         this.setText(this.getValue());
+
+        this.addActionListener(controller);
     }
 
     /**

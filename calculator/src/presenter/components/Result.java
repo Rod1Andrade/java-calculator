@@ -18,37 +18,37 @@ public class Result extends JPanel {
     public static final int PADDING_HORIZONTAL = 10;
     public static final int PADDING_VERTICAL = 15;
 
-    private JLabel resultText;
-    private String value;
+    private JLabel resultLabel;
 
+    /**
+     * Construtor
+     * @param value
+     */
     public Result(String value) {
         this.setLayout(new FlowLayout(
             FlowLayout.LEADING,
             Result.PADDING_HORIZONTAL,
             Result.PADDING_VERTICAL));
-        this.setValue(value);
 
-        this.resultText = new JLabel(this.getValue());
+        this.resultLabel = new JLabel(value);
         this.setBorder(BorderFactory.createLineBorder(Color.gray));
-        this.add(this.resultText);
-    }   
-
-    /**
-     * Define o valor
-     * @param value
-     */
-    public void setValue(String value) {
-        this.value = value;
+        this.add(this.resultLabel);
     }
 
     /**
-     * Retorna o valor
-     * @return
+     * Retorna uma resultLabel
+     * @return JLabel resultLabel
      */
-    public String getValue() {
-        return this.value;
+    public JLabel getResultLabel() {
+        return resultLabel;
     }
 
-    // TODO Eventos para manipular o texto
+    /**
+     * Define uma resultLabel
+     * @param resultLabel
+     */
+    public void setResultLabel(JLabel resultLabel) {
+        this.resultLabel = resultLabel;
+    }
 
 }

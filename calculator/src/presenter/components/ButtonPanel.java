@@ -1,5 +1,7 @@
 package presenter.components;
 
+import controller.ButtonController;
+
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 
@@ -10,6 +12,8 @@ import java.awt.GridLayout;
  */
 public class ButtonPanel extends JPanel {
     
+    private ButtonController buttonController;
+
     private Button button7;
     private Button button8;
     private Button button9;
@@ -29,7 +33,7 @@ public class ButtonPanel extends JPanel {
     /**
      * Construtor
      */
-    public ButtonPanel() {
+    public ButtonPanel(ButtonController buttonController) {
 
         GridLayout gridLayout = new GridLayout(4, 3);
         gridLayout.setVgap(1);
@@ -37,6 +41,8 @@ public class ButtonPanel extends JPanel {
 
         this.setLayout(gridLayout);
         this.setPreferredSize(this.getPreferredSize());
+
+        this.buttonController = buttonController;
 
         this.init();
         this.addAllButtons();
@@ -46,21 +52,21 @@ public class ButtonPanel extends JPanel {
      * Funcao para instanciar os componentes
      */
     private void init() {
-        this.button7 = new Button("7");
-        this.button8 = new Button("8");
-        this.button9 = new Button("9");
+        this.button7 = new Button("7", this.buttonController);
+        this.button8 = new Button("8", this.buttonController);
+        this.button9 = new Button("9", this.buttonController);
 
-        this.button4 = new Button("4");
-        this.button5 = new Button("5");
-        this.button6 = new Button("6");
+        this.button4 = new Button("4", this.buttonController);
+        this.button5 = new Button("5", this.buttonController);
+        this.button6 = new Button("6", this.buttonController);
 
-        this.button1 = new Button("1");
-        this.button2 = new Button("2");
-        this.button3 = new Button("3");
+        this.button1 = new Button("1", this.buttonController);
+        this.button2 = new Button("2", this.buttonController);
+        this.button3 = new Button("3", this.buttonController);
 
-        this.button0 = new Button("0");
-        this.buttonComma = new Button(",");
-        this.buttonDelete = new Button("Deletar");
+        this.button0 = new Button("0", this.buttonController);
+        this.buttonComma = new Button(",", this.buttonController);
+        this.buttonDelete = new Button("Deletar", this.buttonController);
     }
 
     /**

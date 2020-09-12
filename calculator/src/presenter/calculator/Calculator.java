@@ -1,6 +1,8 @@
 package presenter.calculator;
 
 
+import controller.ButtonController;
+import controller.ResultController;
 import presenter.components.ButtonPanel;
 import presenter.components.Result;
 import presenter.components.SidePanel;
@@ -34,7 +36,11 @@ public class Calculator  extends JPanel {
         this.result = new Result("Nenhuma operação...");
         this.add(this.result, BorderLayout.NORTH);
 
-        this.buttonPanel = new ButtonPanel();
+        // Controllers (acoplado)
+        ResultController resultController = new ResultController(result.getResultLabel());
+        ButtonController buttonController = new ButtonController(resultController);
+
+        this.buttonPanel = new ButtonPanel(buttonController);
         this.add(this.buttonPanel, BorderLayout.CENTER);
 
         this.sidePanel = new SidePanel();
