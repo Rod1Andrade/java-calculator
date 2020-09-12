@@ -1,13 +1,11 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 /**
  * Classe responsavel por representar o dominio
  * do projeto.
- *
+ * <p>
  * Classe calculadora.
  *
  * @author Rodrigo Andrade
@@ -24,88 +22,109 @@ public class Calculator {
     }
 
     /**
-     * Faz o calculo da expressao passada como argumento.
+     * Faz o calculo com base em uma expressao
      *
-     * @param expresion String
-     * @return Double resultado
+     * @param expression
+     * @return
      */
-    public double make(String expresion) {
+    public double make(String expression){
+        //Stack for Numbers
+        Stack<Double> numbers = new Stack<>();
 
-        Stack<Double> values = new Stack<>();
-        String[] numbers = prepareNumbers(expresion);
-        List<Character> simbols = prepareSimbols(expresion);
-
-        if(numbers.length == 1) {
-            return Double.parseDouble(numbers[0]);
+        //Stack for operators
+        Stack<Character> operations = new Stack<>();
+        for(int i=0; i<expression.length();i++) {
+            char c = expression.charAt(i);
+            //check if it is number
+            if(Character.isDigit(c)){
+                //Entry is Digit, it could be greater than one digit number
+                double num = 0.0;
+                while (Character.isDigit(c)) {
+                    num = num*10 + (c-'0');
+                    i++;
+                    if(i < expression.length())
+                        c = expression.charAt(i);
+                    else
+                        break;
+                }
+                i--;
+                //push it into stack
+                numbers.push(num);
+            }else if(c=='('){
+                //push it to operators stack
+                operations.push(c);
+            }
+            //Closed brace, evaluate the entire brace
+            else if(c==')') {
+                while(operations.peek()!='('){
+                    double output = performOperation(numbers, operations);
+                    //push it back to stack
+                    numbers.push(output);
+                }
+                operations.pop();
+            }
+            // current character is operator
+            else if(isOperator(c)){
+                //1. If current operator has higher precedence than operator on top of the stack,
+                //the current operator can be placed in stack
+                // 2. else keep popping operator from stack and perform the operation in  numbers stack till
+                //either stack is not empty or current operator has higher precedence than operator on top of the stack
+                while(!operations.isEmpty() && precedence(c)<=precedence(operations.peek())){
+                    double output = performOperation(numbers, operations);
+                    //push it back to stack
+                    numbers.push(output);
+                }
+                //now push the current operator to stack
+                operations.push(c);
+            }
         }
+        //If here means entire expression has been processed,
+        //Perform the remaining operations in stack to the numbers stack
 
-        int index = 0;
-        for (String number : numbers) {
-            char simbol = simbols.get(index);
-            double numberParsed = Double.parseDouble(number);
-            double numberPeek;
-            double numberPop;
-
-            if(values.isEmpty()) {
-                values.push(numberParsed);
-                continue;
-            }
-
-            if(simbol == '+') {
-                numberPeek = values.peek();
-                values.push(numberParsed);
-                values.push(numberPeek + numberParsed);
-                index++;
-            }
-
-            if(simbol == '-') {
-                numberPeek = values.peek();
-                values.push(numberParsed);
-                values.push(numberPeek - numberParsed);
-                index++;
-            }
-
-            if(simbol == '*') {
-                numberPop = values.pop();
-                values.push(numberPop * numberParsed);
-                index++;
-            }
-
-            if(simbol == '/') {
-                numberPop = values.pop();
-                values.push(numberPop / numberParsed);
-                index++;
-            }
+        while(!operations.isEmpty()){
+            double output = performOperation(numbers, operations);
+            //push it back to stack
+            numbers.push(output);
         }
-
-        return values.peek();
+        return numbers.pop();
     }
 
-    /**
-     * Prepara o simbolos matematicos
-     *
-     * @param expresion String
-     * @return Char[]
-     */
-    private List<Character> prepareSimbols(String expresion) {
-        List<Character> simbols = new ArrayList<>();
-        for (char c : expresion.toCharArray()) {
-            if(c == '+' || c == '-' || c == '*' || c == '/') {
-                simbols.add(c);
-            }
+    static int precedence(char c){
+        switch (c){
+            case '+':
+            case '-':
+                return 1;
+            case '*':
+            case '/':
+                return 2;
+            case '^':
+                return 3;
         }
-        return simbols;
+        return -1;
     }
 
-    /**
-     * Prepara os numeros
-     *
-     * @param expresion Strings
-     * @return Double[]
-     */
-    private String[] prepareNumbers(String expresion) {
-        String numbers[] = expresion.split("[+,\\-,*,/]");
-        return numbers;
+    public double performOperation(Stack<Double> numbers, Stack<Character> operations) {
+        double a = numbers.pop();
+        double b = numbers.pop();
+        char operation = operations.pop();
+        switch (operation) {
+            case '+':
+                return a + b;
+            case '-':
+                return b - a;
+            case '*':
+                return a * b;
+            case '/':
+                if (a == 0)
+                    throw new
+                            UnsupportedOperationException("Cannot divide by zero");
+                return b / a;
+        }
+        return 0;
+    }
+
+    public boolean isOperator(char c){
+        return (c=='+'||c=='-'||c=='/'||c=='*'||c=='^');
     }
 
 }

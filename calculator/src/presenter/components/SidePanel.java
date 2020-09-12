@@ -1,5 +1,7 @@
 package presenter.components;
 
+import utils.Constants;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,7 +21,7 @@ public class SidePanel extends JPanel {
      */
     public SidePanel(OperatorSelect operatorSelect) {
         this.operatorSelect = operatorSelect;
-        this.resultButton = new JButton(Result.RESULT_VALUE);
+        this.resultButton = new JButton(Constants.RESULT_VALUE);
 
         GridLayout gridLayout = new GridLayout(2, 1);
         gridLayout.setVgap(10);

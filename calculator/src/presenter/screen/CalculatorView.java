@@ -7,6 +7,7 @@ import presenter.components.ButtonPanel;
 import presenter.components.OperatorSelect;
 import presenter.components.Result;
 import presenter.components.SidePanel;
+import utils.Constants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,7 +37,7 @@ public class CalculatorView extends JPanel {
         this.setPreferredSize(this.getPreferredSize());
 
         // Label result panel
-        this.result = new Result(Result.DEFAULT_VALUE);
+        this.result = new Result(Constants.DEFAULT_VALUE);
         this.add(this.result, BorderLayout.NORTH);
 
         ResultController resultController = new ResultController(result); // (conscientemente acoplado nesse ponto)

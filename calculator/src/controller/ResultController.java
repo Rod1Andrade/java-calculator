@@ -2,6 +2,7 @@ package controller;
 
 import domain.Calculator;
 import presenter.components.Result;
+import utils.Constants;
 
 import javax.swing.*;
 
@@ -39,7 +40,7 @@ public class ResultController {
      * @param value
      */
     public void concatValue(String value) {
-        if(this.value.trim().equals(Result.DEFAULT_VALUE)) {
+        if(this.value.trim().equals(Constants.DEFAULT_VALUE)) {
             this.value = value;
         } else {
             this.value += value;
@@ -50,7 +51,7 @@ public class ResultController {
      * Deleta o ultimo valor
      */
     public void deleteValue() {
-        if(this.value.length() > 0 && !this.value.trim().equals(Result.DEFAULT_VALUE)) {
+        if(this.value.length() > 0 && !this.value.trim().equals(Constants.DEFAULT_VALUE)) {
             char lastChar = this.value.charAt(this.value.length() - 1);
             int lastIndex = this.value.lastIndexOf(lastChar);
 
@@ -59,7 +60,7 @@ public class ResultController {
         }
 
         if (this.value.isEmpty()) {
-            this.value = Result.DEFAULT_VALUE;
+            this.value = Constants.DEFAULT_VALUE;
         }
     }
 
