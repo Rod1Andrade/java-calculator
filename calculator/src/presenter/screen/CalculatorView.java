@@ -33,6 +33,8 @@ public class CalculatorView extends JPanel {
      * Construtor
      */
     public CalculatorView() {
+        this.setBackground(Color.DARK_GRAY);
+
         this.setLayout(new BorderLayout());
         this.setPreferredSize(this.getPreferredSize());
 

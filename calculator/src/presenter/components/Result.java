@@ -25,13 +25,16 @@ public class Result extends JPanel {
      * @param value
      */
     public Result(String value) {
+        this.setBackground(Color.DARK_GRAY);
+
         this.setLayout(new FlowLayout(
             FlowLayout.LEADING,
             Result.PADDING_HORIZONTAL,
             Result.PADDING_VERTICAL));
 
         this.resultLabel = new JLabel(value);
-        this.setBorder(BorderFactory.createLineBorder(Color.gray));
+        this.resultLabel.setForeground(Color.WHITE);
+        this.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         this.add(this.resultLabel);
     }
 

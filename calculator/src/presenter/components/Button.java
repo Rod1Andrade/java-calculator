@@ -23,14 +23,14 @@ public class Button extends JButton {
     
     /**
      * Construtor
-     * 
      * @param value
+     * @param color
      */
-    Button(String value, ButtonController controller) {
+    Button(String value, ButtonController controller, Color backgroundColor, Color textColor) {
         this.value = value;
         this.setMinimumSize(new Dimension(Button.WIDTH, Button.HEIGHT));
-        this.setBackground(Color.WHITE);
-        this.setForeground(Color.BLACK);
+        this.setBackground(backgroundColor);
+        this.setForeground(textColor);
         this.setText(this.getValue());
 
         this.addActionListener(controller);

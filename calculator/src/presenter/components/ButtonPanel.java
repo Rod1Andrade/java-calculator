@@ -3,7 +3,7 @@ package presenter.components;
 import controller.ButtonController;
 
 import javax.swing.JPanel;
-import java.awt.GridLayout;
+import java.awt.*;
 
 /**
  * Painel de botoes
@@ -34,6 +34,7 @@ public class ButtonPanel extends JPanel {
      * Construtor
      */
     public ButtonPanel(ButtonController buttonController) {
+        this.setBackground(Color.DARK_GRAY);
 
         GridLayout gridLayout = new GridLayout(4, 3);
         gridLayout.setVgap(1);
@@ -52,21 +53,21 @@ public class ButtonPanel extends JPanel {
      * Funcao para instanciar os componentes
      */
     private void init() {
-        this.button7 = new Button("7", this.buttonController);
-        this.button8 = new Button("8", this.buttonController);
-        this.button9 = new Button("9", this.buttonController);
+        this.button7 = new Button("7", this.buttonController, Color.BLACK, Color.WHITE);
+        this.button8 = new Button("8", this.buttonController, Color.BLACK, Color.WHITE);
+        this.button9 = new Button("9", this.buttonController, Color.BLACK, Color.WHITE);
 
-        this.button4 = new Button("4", this.buttonController);
-        this.button5 = new Button("5", this.buttonController);
-        this.button6 = new Button("6", this.buttonController);
+        this.button4 = new Button("4", this.buttonController, Color.BLACK, Color.WHITE);
+        this.button5 = new Button("5", this.buttonController, Color.BLACK, Color.WHITE);
+        this.button6 = new Button("6", this.buttonController, Color.BLACK, Color.WHITE);
 
-        this.button1 = new Button("1", this.buttonController);
-        this.button2 = new Button("2", this.buttonController);
-        this.button3 = new Button("3", this.buttonController);
+        this.button1 = new Button("1", this.buttonController, Color.BLACK, Color.WHITE);
+        this.button2 = new Button("2", this.buttonController, Color.BLACK, Color.WHITE);
+        this.button3 = new Button("3", this.buttonController, Color.BLACK, Color.WHITE);
 
-        this.button0 = new Button("0", this.buttonController);
-        this.buttonDot = new Button(".", this.buttonController);
-        this.buttonDelete = new Button("Deletar", this.buttonController);
+        this.button0 = new Button("0", this.buttonController, Color.BLACK, Color.WHITE);
+        this.buttonDot = new Button(".", this.buttonController, Color.BLACK, Color.WHITE);
+        this.buttonDelete = new Button("Deletar", this.buttonController, Color.ORANGE, Color.BLACK);
     }
 
     /**

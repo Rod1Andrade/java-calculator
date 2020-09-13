@@ -18,6 +18,8 @@ public class OperatorSelect extends JPanel {
     private JButton operatorSelectActionButton;
 
     public OperatorSelect() {
+        this.setBackground(Color.DARK_GRAY);
+
         GridLayout gridLayout = new GridLayout(2, 1);
         gridLayout.setVgap(5);
 
@@ -32,8 +34,13 @@ public class OperatorSelect extends JPanel {
      * Funcao para iniciar os componentes
      */
     private void init() {
+
         this.operatorSelect = this.defineOperatorSelect();
+        this.operatorSelect.setBackground(Color.BLACK);
+        this.operatorSelect.setForeground(Color.WHITE);
         this.operatorSelectActionButton = new JButton("Selecionar Operacao");
+        this.operatorSelectActionButton.setBackground(Color.BLACK);
+        this.operatorSelectActionButton.setForeground(Color.WHITE);
     }
 
     /**

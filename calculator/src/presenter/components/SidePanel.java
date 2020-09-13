@@ -20,8 +20,12 @@ public class SidePanel extends JPanel {
      * Construtor
      */
     public SidePanel(OperatorSelect operatorSelect) {
+        this.setBackground(Color.DARK_GRAY);
+
         this.operatorSelect = operatorSelect;
         this.resultButton = new JButton(Constants.RESULT_VALUE);
+        this.resultButton.setBackground(Color.BLACK);
+        this.resultButton.setForeground(Color.WHITE);
 
         GridLayout gridLayout = new GridLayout(2, 1);
         gridLayout.setVgap(10);
@@ -29,6 +33,7 @@ public class SidePanel extends JPanel {
         JPanel sidePanelComponents = new JPanel(gridLayout);
         sidePanelComponents.add(this.operatorSelect);
         sidePanelComponents.add(this.resultButton);
+        sidePanelComponents.setBackground(Color.DARK_GRAY);
 
         this.setLayout(new BorderLayout());
         this.add(sidePanelComponents, BorderLayout.NORTH);
