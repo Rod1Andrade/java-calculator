@@ -29,7 +29,7 @@ public class Calculator {
      * Faz o cálculo baseado na expressão passada como argumento.
      *
      * @param expression
-     * @return
+     * @return Double
      */
     public double make(String expression) {
 
@@ -78,9 +78,9 @@ public class Calculator {
     }
 
     /**
-     * Cria uma lista de operacoes existents
+     * Cria uma lista de operacoes existentes
      * @param expression
-     * @return
+     * @return List
      */
     private List<Character> listOfOperators(String expression) {
         List<Character> list = new ArrayList<>();
@@ -111,11 +111,12 @@ public class Calculator {
     }
 
     /**
-     * Executa a operacao
+     * Executa o calculo com base na operacao.
      *
      * @param numbers
      * @param operations
-     * @return
+     * @return Double
+     * @throws UnsupportedOperationException
      */
     private double executeCalc(Stack<Double> numbers, Stack<Character> operations) {
 
