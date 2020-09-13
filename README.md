@@ -17,7 +17,8 @@ visto que já existem muitas calculadoras feitas em Java.
 A usabilidade consiste em selecionar uma operação na combo box,pós seleção é possível
 ver o sinal da operação matemática refletindo na Label.
 
-![Screenshot from 2020-09-12 20-56-02](https://user-images.githubusercontent.com/51142291/93007090-e3624d00-f53a-11ea-87de-464f73095f97.png)
+![Screenshot from 2020-09-12 22-27-00](https://user-images.githubusercontent.com/51142291/93008084-33471100-f547-11ea-9bf4-8c917a34578b.png)
+
 
 ## O que eu aprendi com esse projeto
 
