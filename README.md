@@ -1,5 +1,7 @@
 # Java Calculator
 
+![License-MIT](https://img.shields.io/badge/License-MIT-green) ![Java-version-Used-14.0.1](https://img.shields.io/badge/Java%20Version-14.0.1-yellowgreen)
+
 Calculadora simples feita em java para a disciplina de programação 1
 utilizando a API swing para a construção gráfica.
 
