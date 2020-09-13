@@ -31,4 +31,6 @@ ver o sinal da operação matemática refletindo na Label.
 Em suma, o projeto foi proveitoso e divertido de se fazer, ainda há correções e mudanças
 que quero fazer, tanto no tratamento de erros, quanto no algoritimo Infix calculator.
 
-Sintam-se livre para contribuições e dicas. E podem usar o código como quiser.
+Sintam-se livre para contribuições e dicas.
+
+E podem usar o código como quiser.
