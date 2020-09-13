@@ -1,5 +1,9 @@
 package domain;
 
+import utils.Constants;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -22,91 +26,106 @@ public class Calculator {
     }
 
     /**
-     * Faz o calculo com base em uma expressao
+     * Faz o cálculo baseado na expressão passada como argumento.
      *
      * @param expression
      * @return
      */
-    public double make(String expression){
-        //Stack for Numbers
-        Stack<Double> numbers = new Stack<>();
+    public double make(String expression) {
 
-        //Stack for operators
-        Stack<Character> operations = new Stack<>();
-        for(int i=0; i<expression.length();i++) {
-            char c = expression.charAt(i);
-            //check if it is number
-            if(Character.isDigit(c)){
-                //Entry is Digit, it could be greater than one digit number
-                double num = 0.0;
-                while (Character.isDigit(c)) {
-                    num = num*10 + (c-'0');
-                    i++;
-                    if(i < expression.length())
-                        c = expression.charAt(i);
-                    else
-                        break;
+        Stack<Double> stackNumbers = new Stack<>();
+        Stack<Character> stackOperations = new Stack<>();
+
+        List<Character> operators = this.listOfOperators(expression);
+        String numbers[] = expression.split("[+,\\-,*,/]");
+
+        // index de controle da pilha de operações...
+        int operationIndex = 0;
+        for(int i = 0; i < numbers.length; i++) {
+            // Empilha um número na pilha de números...
+            stackNumbers.push(Double.parseDouble(numbers[i]));
+
+            // Se a lista de operações não tiver sido percorrido por completo ...
+            if(operationIndex < operators.size()) {
+                // Enquanto a pilha não estiver vazia e o operador atual ter a precedência menor que a precedência da pilha, é resolvido primeiro o operador
+                // de precedência maior (ou seja o operador da pilha) ...
+                while (!stackOperations.isEmpty() && this.precedence(operators.get(operationIndex)) <= this.precedence(stackOperations.peek())) {
+                    // Nesse ponto é removido o operador da pilhar de operações
+                    // e o número da pilha de números.
+                    double result = executeCalc(stackNumbers, stackOperations);
+                    // Depois de resolvido o calculo de precedência maior, ele é emiplhado novamente.
+                    stackNumbers.push(result);
                 }
-                i--;
-                //push it into stack
-                numbers.push(num);
-            }else if(c=='('){
-                //push it to operators stack
-                operations.push(c);
-            }
-            //Closed brace, evaluate the entire brace
-            else if(c==')') {
-                while(operations.peek()!='('){
-                    double output = performOperation(numbers, operations);
-                    //push it back to stack
-                    numbers.push(output);
-                }
-                operations.pop();
-            }
-            // current character is operator
-            else if(isOperator(c)){
-                //1. If current operator has higher precedence than operator on top of the stack,
-                //the current operator can be placed in stack
-                // 2. else keep popping operator from stack and perform the operation in  numbers stack till
-                //either stack is not empty or current operator has higher precedence than operator on top of the stack
-                while(!operations.isEmpty() && precedence(c)<=precedence(operations.peek())){
-                    double output = performOperation(numbers, operations);
-                    //push it back to stack
-                    numbers.push(output);
-                }
-                //now push the current operator to stack
-                operations.push(c);
+
+                // Empilha as operações em cada iteração
+                stackOperations.push(operators.get(operationIndex++));
             }
         }
-        //If here means entire expression has been processed,
-        //Perform the remaining operations in stack to the numbers stack
 
-        while(!operations.isEmpty()){
-            double output = performOperation(numbers, operations);
-            //push it back to stack
-            numbers.push(output);
+        // Mesmo depois se ainda houver operações a serem feitas
+        // Enquanto houber operações deve ser efetuado o calculo...
+        while (!stackOperations.isEmpty()) {
+            // Nesse ponto é removido o operador da pilhar de operações
+            // e o número da pilha de números.
+            double result = executeCalc(stackNumbers, stackOperations);
+
+            // Depois de resolvido o calculo de precedência maior, ele é emiplhado novamente.
+            stackNumbers.push(result);
         }
-        return numbers.pop();
+
+        // Por fim é retornado o último elemento que sobra da pilha de números...
+        return stackNumbers.pop();
     }
 
-    static int precedence(char c){
-        switch (c){
+    /**
+     * Cria uma lista de operacoes existents
+     * @param expression
+     * @return
+     */
+    private List<Character> listOfOperators(String expression) {
+        List<Character> list = new ArrayList<>();
+        for (Character operator: expression.toCharArray()) {
+            if(isOperator(operator)) {
+                list.add(operator);
+            }
+        }
+        return list;
+    }
+
+    /**
+     * Avalia a precedencia
+     *
+     * @param operator
+     * @return
+     */
+    private int precedence(char operator) {
+        switch (operator) {
             case '+':
             case '-':
                 return 1;
             case '*':
             case '/':
                 return 2;
-            case '^':
-                return 3;
         }
         return -1;
     }
 
-    public double performOperation(Stack<Double> numbers, Stack<Character> operations) {
+    /**
+     * Executa a operacao
+     *
+     * @param numbers
+     * @param operations
+     * @return
+     */
+    private double executeCalc(Stack<Double> numbers, Stack<Character> operations) {
+
+        // Desempilha dois números da pilha
         double a = numbers.pop();
         double b = numbers.pop();
+
+        // Desempilha a operação
         char operation = operations.pop();
+
         switch (operation) {
             case '+':
                 return a + b;
@@ -117,14 +136,20 @@ public class Calculator {
             case '/':
                 if (a == 0)
                     throw new
-                            UnsupportedOperationException("Cannot divide by zero");
+                            UnsupportedOperationException(Constants.DIVISION_BY_ZERO);
                 return b / a;
         }
         return 0;
     }
 
-    public boolean isOperator(char c){
-        return (c=='+'||c=='-'||c=='/'||c=='*'||c=='^');
+    /**
+     * Verifica se o caracter é uma operacao
+     *
+     * @param character
+     * @return
+     */
+    public boolean isOperator(Character character) {
+        return (character.equals('+') || character.equals('-') || character.equals('/') || character.equals('*'));
     }
 
 }
