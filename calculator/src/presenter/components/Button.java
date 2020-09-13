@@ -24,7 +24,9 @@ public class Button extends JButton {
     /**
      * Construtor
      * @param value
-     * @param color
+     * @param controller
+     * @param backgroundColor
+     * @param textColor
      */
     Button(String value, ButtonController controller, Color backgroundColor, Color textColor) {
         this.value = value;
