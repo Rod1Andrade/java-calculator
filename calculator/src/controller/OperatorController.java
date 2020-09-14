@@ -14,9 +14,14 @@ import java.awt.event.ActionListener;
  */
 public class OperatorController implements ActionListener {
 
-    private ResultController resultController;
-    private JComboBox<Operator> comboBox;
+    private final ResultController resultController;
+    private final JComboBox<Operator> comboBox;
 
+    /**
+     * Construtor
+     * @param resultController Controller do Result
+     * @param comboBox ComboBox com as opcoes de operacoes
+     */
     public OperatorController(ResultController resultController, JComboBox<Operator> comboBox) {
         this.resultController = resultController;
         this.comboBox = comboBox;

@@ -14,11 +14,11 @@ import java.awt.event.ActionListener;
  */
 public class ButtonController implements ActionListener {
 
-    private ResultController resultController;
+    private final ResultController resultController;
 
     /**
      * Construtor
-     * @param resultController
+     * @param resultController Controller do Result
      */
     public ButtonController(ResultController resultController) {
         this.resultController = resultController;

@@ -9,7 +9,6 @@ import java.util.Stack;
 /**
  * Classe responsavel por representar o dominio
  * do projeto.
- * <p>
  * Classe calculadora.
  *
  * @author Rodrigo Andrade
@@ -79,7 +78,7 @@ public class Calculator {
 
     /**
      * Cria uma lista de operacoes existentes
-     * @param expression
+     * @param expression Expressao
      * @return List
      */
     private List<Character> listOfOperators(String expression) {
@@ -95,7 +94,7 @@ public class Calculator {
     /**
      * Avalia a precedencia
      *
-     * @param operator
+     * @param operator Operador
      * @return
      */
     private int precedence(char operator) {
@@ -113,8 +112,8 @@ public class Calculator {
     /**
      * Executa o calculo com base na operacao.
      *
-     * @param numbers
-     * @param operations
+     * @param numbers Pilha de numeros
+     * @param operations Pilha de operacoes
      * @return Double
      * @throws UnsupportedOperationException
      */
@@ -146,7 +145,7 @@ public class Calculator {
     /**
      * Verifica se o caracter é uma operacao
      *
-     * @param character
+     * @param character Caracter a ser verificado
      * @return
      */
     public boolean isOperator(Character character) {

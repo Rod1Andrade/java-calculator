@@ -13,12 +13,12 @@ import javax.swing.*;
  */
 public class ResultController {
 
-    private Result result;
+    private final Result result;
     private String value;
 
     /**
      * Construtor
-     * @param result
+     * @param result Componente Result
      */
     public ResultController(Result result) {
         this.result = result;
@@ -37,7 +37,7 @@ public class ResultController {
 
     /**
      * Concatena o valor
-     * @param value
+     * @param value Valor a ser concatenado
      */
     public void concatValue(String value) {
         if(this.value.trim().equals(Constants.DEFAULT_VALUE)) {
@@ -55,8 +55,7 @@ public class ResultController {
             char lastChar = this.value.charAt(this.value.length() - 1);
             int lastIndex = this.value.lastIndexOf(lastChar);
 
-            String substring = this.value.substring(0, lastIndex);
-            this.value = substring;
+            this.value = this.value.substring(0, lastIndex);
         }
 
         if (this.value.isEmpty()) {

@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 
 /**
  * Controla o efeito de hover no botao.
+ *
+ * @author Rodrigo Andrade
  */
 public class MouseHover extends MouseAdapter {
 

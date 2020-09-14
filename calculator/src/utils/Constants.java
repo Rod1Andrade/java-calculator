@@ -1,5 +1,10 @@
 package utils;
 
+/**
+ * Classe de constantes
+ *
+ * @author Rodrigo Andrade
+ */
 public class Constants {
 
     public static final String DELETAR = "Deletar";

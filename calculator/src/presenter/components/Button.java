@@ -7,8 +7,6 @@ import utils.ResetButtonModel;
 import javax.swing.*;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 /**
  * Botao individual da calculadora

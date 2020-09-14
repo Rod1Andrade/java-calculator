@@ -7,6 +7,8 @@ import javax.swing.*;
  *
  * Usado nesse contexto para tirar a resposta do click
  * gerada por padrao.
+ *
+ * @author Rodrigo Andrade
  */
 public class ResetButtonModel extends DefaultButtonModel {
 
