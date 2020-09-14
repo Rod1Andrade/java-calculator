@@ -9,7 +9,16 @@ utilizando a API swing para a construção gráfica.
 
 Caso queira testar a calculadora, basta clonar o repositório e executar o **App.java**.
 
-Solução provisória enquanto não há **build**.
+Ou simplesmente baixe o arquivo dentro de **build**.
+
+Duas formas de executar o jar:
+
+1. Execute com double click
+2. Execute atraves de um terminal com o seguinte comando:
+```
+java -jar calculator.jar
+```
+
 
 ## Explicações
 
