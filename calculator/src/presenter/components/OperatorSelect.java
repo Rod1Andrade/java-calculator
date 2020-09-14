@@ -2,6 +2,7 @@ package presenter.components;
 
 import domain.Operator;
 import enums.Opeators;
+import utils.Constants;
 import utils.MouseHover;
 import utils.ResetButtonModel;
 
@@ -54,7 +55,7 @@ public class OperatorSelect extends JPanel {
      * Define os valores a serem iniciados no botao de acao.
      */
     private void actionButtonInit() {
-        this.operatorSelectActionButton = new JButton("Selecionar Operacao");
+        this.operatorSelectActionButton = new JButton(Constants.SELECT_OPERATION);
         this.operatorSelectActionButton.setBackground(Color.BLACK);
         this.operatorSelectActionButton.setForeground(Color.WHITE);
         this.operatorSelectActionButton.setFocusPainted(false);
@@ -71,7 +72,7 @@ public class OperatorSelect extends JPanel {
      * @return JComboBox
      */
     private JComboBox<Operator> defineOperatorSelect() {
-        JComboBox<Operator> comboBox = new JComboBox();
+        JComboBox<Operator> comboBox = new JComboBox<>();
         comboBox.addItem(new Operator("Adição", Opeators.SUM, "+"));
         comboBox.addItem(new Operator("Subtração", Opeators.SUM, "-"));
         comboBox.addItem(new Operator("Multiplicação", Opeators.SUM, "*"));
