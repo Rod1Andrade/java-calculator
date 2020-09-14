@@ -1,13 +1,14 @@
 package presenter.components;
 
 import controller.ButtonController;
+import utils.MouseHover;
+import utils.ResetButtonModel;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.border.BevelBorder;
+import javax.swing.*;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * Botao individual da calculadora
@@ -23,24 +24,44 @@ public class Button extends JButton {
     
     /**
      * Construtor
-     * @param value
-     * @param controller
-     * @param backgroundColor
-     * @param textColor
+     * @param value  Valor textual
+     * @param controller Controller do botao
+     * @param backgroundColor Cor de fundo do botao
+     * @param textColor Cor do texto do botao
+     * @param hasHoverEffect Define se tem o efeito de hover no botao
      */
-    Button(String value, ButtonController controller, Color backgroundColor, Color textColor) {
+    Button(
+            String value,
+            ButtonController controller,
+            Color backgroundColor,
+            Color textColor,
+            boolean hasHoverEffect
+    ) {
         this.value = value;
         this.setMinimumSize(new Dimension(Button.WIDTH, Button.HEIGHT));
-        this.setBackground(backgroundColor);
-        this.setForeground(textColor);
         this.setText(this.getValue());
 
+        this.setBorderPainted(false);
+        this.setContentAreaFilled(true);
+
+        this.setFocusPainted(false);
+        this.setBackground(backgroundColor);
+        this.setForeground(textColor);
+
+        this.setModel(new ResetButtonModel());
+
+        this.setRolloverEnabled(false);
+
         this.addActionListener(controller);
+
+        if(hasHoverEffect) {
+            this.addMouseListener(new MouseHover(this, new Color(75, 0, 130)));
+        }
     }
 
     /**
      * Define o valor do botao
-     * @param value
+     * @param value Valor que vai ser definido para o botao
      */
     public void setValue(String value) {
         this.value = value;

@@ -2,6 +2,8 @@ package presenter.components;
 
 import domain.Operator;
 import enums.Opeators;
+import utils.MouseHover;
+import utils.ResetButtonModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,13 +36,33 @@ public class OperatorSelect extends JPanel {
      * Funcao para iniciar os componentes
      */
     private void init() {
+        operatorSelectInit();
+        actionButtonInit();
+    }
 
+    /**
+     * Define como o comboBox de selecao unica
+     * deve ser iniciado.
+     */
+    private void operatorSelectInit() {
         this.operatorSelect = this.defineOperatorSelect();
         this.operatorSelect.setBackground(Color.BLACK);
         this.operatorSelect.setForeground(Color.WHITE);
+    }
+
+    /**
+     * Define os valores a serem iniciados no botao de acao.
+     */
+    private void actionButtonInit() {
         this.operatorSelectActionButton = new JButton("Selecionar Operacao");
         this.operatorSelectActionButton.setBackground(Color.BLACK);
         this.operatorSelectActionButton.setForeground(Color.WHITE);
+        this.operatorSelectActionButton.setFocusPainted(false);
+        this.operatorSelectActionButton.setBorderPainted(false);
+        this.operatorSelectActionButton.setModel(new ResetButtonModel());
+        this.operatorSelectActionButton.addMouseListener(
+                new MouseHover(this.operatorSelectActionButton, new Color(13, 13, 13))
+        );
     }
 
     /**

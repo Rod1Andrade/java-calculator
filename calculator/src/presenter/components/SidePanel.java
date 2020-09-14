@@ -1,6 +1,8 @@
 package presenter.components;
 
 import utils.Constants;
+import utils.MouseHover;
+import utils.ResetButtonModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,9 +25,7 @@ public class SidePanel extends JPanel {
         this.setBackground(Color.DARK_GRAY);
 
         this.operatorSelect = operatorSelect;
-        this.resultButton = new JButton(Constants.RESULT_VALUE);
-        this.resultButton.setBackground(Color.BLACK);
-        this.resultButton.setForeground(Color.WHITE);
+        initResultButton();
 
         GridLayout gridLayout = new GridLayout(2, 1);
         gridLayout.setVgap(10);
@@ -37,6 +37,19 @@ public class SidePanel extends JPanel {
 
         this.setLayout(new BorderLayout());
         this.add(sidePanelComponents, BorderLayout.NORTH);
+    }
+
+    private void initResultButton() {
+        this.resultButton = new JButton(Constants.RESULT_VALUE);
+        this.resultButton.setBackground(Color.BLACK);
+        this.resultButton.setForeground(Color.WHITE);
+        this.resultButton.setFocusPainted(false);
+        this.resultButton.setBorderPainted(false);
+        this.resultButton.setModel(new ResetButtonModel());
+        this.resultButton.addMouseListener(new MouseHover(
+                this.resultButton,
+                new Color(13, 13,13)
+        ));
     }
 
     public OperatorSelect getOperatorSelect() {

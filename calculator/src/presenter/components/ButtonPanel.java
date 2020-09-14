@@ -7,11 +7,11 @@ import java.awt.*;
 
 /**
  * Painel de botoes
- * 
+ *
  * @author Rodrigo Andrade
  */
 public class ButtonPanel extends JPanel {
-    
+
     private ButtonController buttonController;
 
     private Button button7;
@@ -53,21 +53,101 @@ public class ButtonPanel extends JPanel {
      * Funcao para instanciar os componentes
      */
     private void init() {
-        this.button7 = new Button("7", this.buttonController, Color.BLACK, Color.WHITE);
-        this.button8 = new Button("8", this.buttonController, Color.BLACK, Color.WHITE);
-        this.button9 = new Button("9", this.buttonController, Color.BLACK, Color.WHITE);
+        this.button7 = new Button(
+                "7",
+                this.buttonController,
+                Color.BLACK,
+                Color.WHITE,
+                true
+        );
 
-        this.button4 = new Button("4", this.buttonController, Color.BLACK, Color.WHITE);
-        this.button5 = new Button("5", this.buttonController, Color.BLACK, Color.WHITE);
-        this.button6 = new Button("6", this.buttonController, Color.BLACK, Color.WHITE);
+        this.button8 = new Button(
+                "8",
+                this.buttonController,
+                Color.BLACK,
+                Color.WHITE,
+                true
+        );
 
-        this.button1 = new Button("1", this.buttonController, Color.BLACK, Color.WHITE);
-        this.button2 = new Button("2", this.buttonController, Color.BLACK, Color.WHITE);
-        this.button3 = new Button("3", this.buttonController, Color.BLACK, Color.WHITE);
+        this.button9 = new Button(
+                "9",
+                this.buttonController,
+                Color.BLACK,
+                Color.WHITE,
+                true
+        );
 
-        this.button0 = new Button("0", this.buttonController, Color.BLACK, Color.WHITE);
-        this.buttonDot = new Button(".", this.buttonController, Color.BLACK, Color.WHITE);
-        this.buttonDelete = new Button("Deletar", this.buttonController, Color.ORANGE, Color.BLACK);
+        this.button4 = new Button(
+                "4",
+                this.buttonController,
+                Color.BLACK,
+                Color.WHITE,
+                true
+        );
+
+        this.button5 = new Button(
+                "5",
+                this.buttonController,
+                Color.BLACK,
+                Color.WHITE,
+                true
+        );
+
+        this.button6 = new Button(
+                "6",
+                this.buttonController,
+                Color.BLACK,
+                Color.WHITE,
+                true
+        );
+
+        this.button1 = new Button(
+                "1",
+                this.buttonController,
+                Color.BLACK,
+                Color.WHITE,
+                true
+        );
+
+        this.button2 = new Button(
+                "2",
+                this.buttonController,
+                Color.BLACK,
+                Color.WHITE,
+                true
+        );
+
+        this.button3 = new Button(
+                "3",
+                this.buttonController,
+                Color.BLACK,
+                Color.WHITE,
+                true
+        );
+
+        this.button0 = new Button(
+                "0",
+                this.buttonController,
+                Color.BLACK,
+                Color.WHITE,
+                true
+        );
+
+        this.buttonDot = new Button(
+                ".",
+                this.buttonController,
+                Color.BLACK,
+                Color.WHITE,
+                true
+        );
+
+        this.buttonDelete = new Button(
+                "Deletar",
+                this.buttonController,
+                Color.ORANGE,
+                Color.BLACK,
+                false
+        );
     }
 
     /**
@@ -77,15 +157,15 @@ public class ButtonPanel extends JPanel {
         this.add(this.button7);
         this.add(this.button8);
         this.add(this.button9);
-        
+
         this.add(this.button4);
         this.add(this.button5);
         this.add(this.button6);
-        
+
         this.add(this.button1);
         this.add(this.button2);
         this.add(this.button3);
-        
+
         this.add(this.button0);
         this.add(this.buttonDot);
         this.add(this.buttonDelete);
