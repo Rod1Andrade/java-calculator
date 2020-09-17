@@ -1,6 +1,5 @@
 package controller;
 
-import presenter.components.Result;
 import utils.Constants;
 
 import javax.swing.*;
@@ -29,7 +28,7 @@ public class ButtonController implements ActionListener {
         JButton button = (JButton) actionEvent.getSource();
 
         if(button.getText().equals("Deletar")) {
-            this.resultController.deleteValue();
+            this.resultController.deleteLastValue();
         } else if(button.getText().equals(Constants.RESULT_VALUE)) {
             this.resultController.makeResult();
         } else {

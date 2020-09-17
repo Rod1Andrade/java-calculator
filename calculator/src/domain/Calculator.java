@@ -27,8 +27,8 @@ public class Calculator {
     /**
      * Faz o cálculo baseado na expressão passada como argumento.
      *
-     * @param expression
-     * @return Double
+     * @param expression Expressao matematica
+     * @return Double - resultado expressao matematica
      */
     public double make(String expression) {
 
@@ -41,16 +41,13 @@ public class Calculator {
         int operationIndex = 0;
 
         for(int i = 0; i < numbers.length; i++) {
-
             stackNumbers.push(Double.parseDouble(numbers[i]));
 
             if(operationIndex < operators.size()) {
-
                 while (!stackOperations.isEmpty() && this.precedence(operators.get(operationIndex)) <= this.precedence(stackOperations.peek())) {
                     double result = executeCalc(stackNumbers, stackOperations);
                     stackNumbers.push(result);
                 }
-
                 stackOperations.push(operators.get(operationIndex++));
             }
         }
@@ -82,7 +79,8 @@ public class Calculator {
      * Avalia a precedencia
      *
      * @param operator Operador
-     * @return
+     * @return um valor inteiro que representa a precedencia de
+     * operadores matematicos
      */
     private int precedence(char operator) {
         switch (operator) {
@@ -99,9 +97,9 @@ public class Calculator {
     /**
      * Executa o calculo com base na operacao.
      *
-     * @param numbers Pilha de numeros
-     * @param operations Pilha de operacoes
-     * @return Double
+     * @param stackNumbers Pilha de numeros
+     * @param stackOperations Pilha de operacoes
+     * @return Double sendo o resultado do calculo executado
      * @throws UnsupportedOperationException
      */
     private double executeCalc(Stack<Double> stackNumbers, Stack<Character> stackOperations) {
@@ -131,7 +129,7 @@ public class Calculator {
      * Verifica se o caracter é uma operacao
      *
      * @param character Caracter a ser verificado
-     * @return
+     * @return Verdadaeiro caso seja um dos operadores validos
      */
     public boolean isOperator(Character character) {
         return (character.equals('+') || character.equals('-') || character.equals('/') || character.equals('*'));

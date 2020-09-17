@@ -50,7 +50,7 @@ public class ResultController {
     /**
      * Deleta o ultimo valor
      */
-    public void deleteValue() {
+    public void deleteLastValue() {
         if(this.value.length() > 0 && !this.value.trim().equals(Constants.DEFAULT_VALUE)) {
             char lastChar = this.value.charAt(this.value.length() - 1);
             int lastIndex = this.value.lastIndexOf(lastChar);
