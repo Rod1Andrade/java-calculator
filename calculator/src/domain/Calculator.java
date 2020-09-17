@@ -38,41 +38,28 @@ public class Calculator {
         List<Character> operators = this.listOfOperators(expression);
         String numbers[] = expression.split("[+,\\-,*,/]");
 
-        // index de controle da pilha de operações...
         int operationIndex = 0;
+
         for(int i = 0; i < numbers.length; i++) {
-            // Empilha um número na pilha de números...
+
             stackNumbers.push(Double.parseDouble(numbers[i]));
 
-            // Se a lista de operações não tiver sido percorrido por completo ...
             if(operationIndex < operators.size()) {
-                // Enquanto a pilha não estiver vazia e o operador atual ter a precedência menor que a precedência da pilha, é resolvido primeiro o operador
-                // de precedência maior (ou seja o operador da pilha) ...
+
                 while (!stackOperations.isEmpty() && this.precedence(operators.get(operationIndex)) <= this.precedence(stackOperations.peek())) {
-                    // Nesse ponto é removido o operador da pilhar de operações
-                    // e o número da pilha de números.
                     double result = executeCalc(stackNumbers, stackOperations);
-                    // Depois de resolvido o calculo de precedência maior, ele é emiplhado novamente.
                     stackNumbers.push(result);
                 }
 
-                // Empilha as operações em cada iteração
                 stackOperations.push(operators.get(operationIndex++));
             }
         }
 
-        // Mesmo depois se ainda houver operações a serem feitas
-        // Enquanto houber operações deve ser efetuado o calculo...
         while (!stackOperations.isEmpty()) {
-            // Nesse ponto é removido o operador da pilhar de operações
-            // e o número da pilha de números.
             double result = executeCalc(stackNumbers, stackOperations);
-
-            // Depois de resolvido o calculo de precedência maior, ele é emiplhado novamente.
             stackNumbers.push(result);
         }
 
-        // Por fim é retornado o último elemento que sobra da pilha de números...
         return stackNumbers.pop();
     }
 
