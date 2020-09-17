@@ -104,14 +104,12 @@ public class Calculator {
      * @return Double
      * @throws UnsupportedOperationException
      */
-    private double executeCalc(Stack<Double> numbers, Stack<Character> operations) {
+    private double executeCalc(Stack<Double> stackNumbers, Stack<Character> stackOperations) {
 
-        // Desempilha dois números da pilha
-        double a = numbers.pop();
-        double b = numbers.pop();
+        double a = stackNumbers.pop();
+        double b = stackNumbers.pop();
 
-        // Desempilha a operação
-        char operation = operations.pop();
+        char operation = stackOperations.pop();
 
         switch (operation) {
             case '+':
